@@ -19,8 +19,8 @@ Class MyPaint.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     Boolean flag : Public
-    TCircle* Circle : Public
-    TPoint* Point : Public
-    TLine* Line : Public
-    TRectangle* Rec : Public
+    TObject* Obj : Public
+    TGroup* Gr : Public
+    Int32 MoveX : Public
+    Int32 MoveY : Public
     System.Drawing.Graphics g : Public

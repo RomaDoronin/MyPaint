@@ -16,28 +16,31 @@ namespace MyPaint {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
-		//TObject* Obj;
+		
 		bool flag;
-		TCircle* Circle;
-		TPoint* Point;
-		TLine* Line;
-		TRectangle* Rec;
+
+		TObject* Obj;
+		TGroup* Gr;
+
+		int MoveX, MoveY;
 
 	private: System::Windows::Forms::RadioButton^  radioButton5;
+	private: System::Windows::Forms::RadioButton^  radioButton6;
+	private: System::Windows::Forms::CheckBox^  checkBox1;
+	private: System::Windows::Forms::RadioButton^  radioButton7;
+	private: System::Windows::Forms::CheckBox^  checkBox2;
 	public:
-		Graphics ^ g/* = CreateGraphics()*/;
+		Graphics ^ g;
 		
 
 		MyForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
 
 			g = this->CreateGraphics();
-
+			Gr = new TGroup();
 			flag = false;
+			MoveX = 0; MoveY = 0;
 		}
 
 	protected:
@@ -77,7 +80,11 @@ namespace MyPaint {
 			this->radioButton3 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton4 = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->radioButton7 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton6 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton5 = (gcnew System::Windows::Forms::RadioButton());
+			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
+			this->checkBox2 = (gcnew System::Windows::Forms::CheckBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -119,25 +126,49 @@ namespace MyPaint {
 			this->radioButton4->AutoSize = true;
 			this->radioButton4->Location = System::Drawing::Point(6, 100);
 			this->radioButton4->Name = L"radioButton4";
-			this->radioButton4->Size = System::Drawing::Size(67, 17);
+			this->radioButton4->Size = System::Drawing::Size(105, 17);
 			this->radioButton4->TabIndex = 3;
 			this->radioButton4->TabStop = true;
-			this->radioButton4->Text = L"Квадрат";
+			this->radioButton4->Text = L"Прямоугольник";
 			this->radioButton4->UseVisualStyleBackColor = true;
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->radioButton7);
+			this->groupBox1->Controls->Add(this->radioButton6);
 			this->groupBox1->Controls->Add(this->radioButton5);
 			this->groupBox1->Controls->Add(this->radioButton1);
 			this->groupBox1->Controls->Add(this->radioButton4);
 			this->groupBox1->Controls->Add(this->radioButton2);
 			this->groupBox1->Controls->Add(this->radioButton3);
-			this->groupBox1->Location = System::Drawing::Point(400, 12);
+			this->groupBox1->Location = System::Drawing::Point(396, 12);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(111, 153);
+			this->groupBox1->Size = System::Drawing::Size(115, 225);
 			this->groupBox1->TabIndex = 4;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Геометрический объект";
+			// 
+			// radioButton7
+			// 
+			this->radioButton7->AutoSize = true;
+			this->radioButton7->Location = System::Drawing::Point(6, 202);
+			this->radioButton7->Name = L"radioButton7";
+			this->radioButton7->Size = System::Drawing::Size(104, 17);
+			this->radioButton7->TabIndex = 6;
+			this->radioButton7->TabStop = true;
+			this->radioButton7->Text = L"Двигать группу";
+			this->radioButton7->UseVisualStyleBackColor = true;
+			// 
+			// radioButton6
+			// 
+			this->radioButton6->AutoSize = true;
+			this->radioButton6->Location = System::Drawing::Point(6, 179);
+			this->radioButton6->Name = L"radioButton6";
+			this->radioButton6->Size = System::Drawing::Size(68, 17);
+			this->radioButton6->TabIndex = 5;
+			this->radioButton6->TabStop = true;
+			this->radioButton6->Text = L"Двигать";
+			this->radioButton6->UseVisualStyleBackColor = true;
 			// 
 			// radioButton5
 			// 
@@ -150,11 +181,36 @@ namespace MyPaint {
 			this->radioButton5->Text = L"Круг";
 			this->radioButton5->UseVisualStyleBackColor = true;
 			// 
+			// checkBox1
+			// 
+			this->checkBox1->AutoSize = true;
+			this->checkBox1->Enabled = false;
+			this->checkBox1->Location = System::Drawing::Point(402, 260);
+			this->checkBox1->Name = L"checkBox1";
+			this->checkBox1->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->checkBox1->Size = System::Drawing::Size(88, 17);
+			this->checkBox1->TabIndex = 5;
+			this->checkBox1->Text = L"Прорисовка";
+			this->checkBox1->UseVisualStyleBackColor = true;
+			// 
+			// checkBox2
+			// 
+			this->checkBox2->AutoSize = true;
+			this->checkBox2->Location = System::Drawing::Point(402, 283);
+			this->checkBox2->Name = L"checkBox2";
+			this->checkBox2->Size = System::Drawing::Size(122, 30);
+			this->checkBox2->TabIndex = 6;
+			this->checkBox2->Text = L"Добавляем\r\nэлементы в группу";
+			this->checkBox2->UseVisualStyleBackColor = true;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(523, 361);
+			this->Controls->Add(this->checkBox2);
+			this->Controls->Add(this->checkBox1);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
@@ -164,6 +220,7 @@ namespace MyPaint {
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -171,61 +228,108 @@ namespace MyPaint {
 	{
 		if (radioButton1->Checked)
 		{
-			Point = new TPoint(e->X, e->Y);
+			Obj = new TPoint(e->X, e->Y);
+
+			if (checkBox2->Checked)
+			{
+				Gr->Insert(Obj);
+			}
 		}
 
 		if (radioButton2->Checked)
 		{
-			Line = new TLine(e->X, e->Y);
+			Obj = new TLine(e->X, e->Y);
+
+			if (checkBox2->Checked)
+			{
+				Gr->Insert(Obj);
+			}
 		}
 
 		if (radioButton3->Checked)
 		{
-			Circle = new TCircle(e->X, e->Y);
+			Obj = new TEllips(e->X, e->Y);
+
+			if (checkBox2->Checked)
+			{
+				Gr->Insert(Obj);
+			}
 		}
 
 		if (radioButton4->Checked)
 		{
-			Rec = new TRectangle(e->X, e->Y);
+			Obj = new TRectangle(e->X, e->Y);
+
+			if (checkBox2->Checked)
+			{
+				Gr->Insert(Obj);
+			}
 		}
 
 		if (radioButton5->Checked)
 		{
-			Circle = new TCircle(e->X, e->Y);
+			Obj = new TCircle(e->X, e->Y);
+
+			if (checkBox2->Checked)
+			{
+				Gr->Insert(Obj);
+			}
 		}
 
 		flag = true;
+
+		if (radioButton6->Checked)
+		{
+			MoveX = e->X;
+			MoveY = e->Y;
+		}
+
+		if (radioButton7->Checked)
+		{
+			MoveX = e->X;
+			MoveY = e->Y;
+		}
 	}
 
 	private: System::Void MyForm_MouseUp(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e)
 	{
 		if (radioButton1->Checked)
 		{
-			Point->Draw(g);
+			Obj->Draw(g);
 		}
 
 		if (radioButton2->Checked)
 		{
-			Line->SetSocondKor(e->X, e->Y);
-			Line->Draw(g);
+			Obj->SetSecondKor(e->X, e->Y);
+			Obj->Draw(g);
 		}
 
 		if (radioButton3->Checked)
 		{
-			Circle->SetKorTwoEllips(e->X, e->Y);
-			Circle->Draw(g);
+			Obj->SetSecondKor(e->X, e->Y);
+			Obj->Draw(g);
 		}
 
 		if (radioButton4->Checked)
 		{
-			Rec->SetSocondKor(e->X, e->Y);
-			Rec->Draw(g);
+			Obj->SetSecondKor(e->X, e->Y);
+			Obj->Draw(g);
 		}
 
 		if (radioButton5->Checked)
 		{			
-			Circle->SetKorTwo(e->X, e->Y);
-			Circle->Draw(g);
+			Obj->SetSecondKor(e->X, e->Y);
+			Obj->Draw(g);
+		}
+
+		if (radioButton6->Checked)
+		{
+			Obj->Move(g, e->X - MoveX, e->Y - MoveY);
+		}
+
+		if (radioButton7->Checked)
+		{
+			Gr->Move(g, e->X - MoveX, e->Y - MoveY);
 		}
 
 		flag = false;
@@ -233,19 +337,21 @@ namespace MyPaint {
 
 	private: System::Void MyForm_MouseMove(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e)
 	{
-		/*if ((radioButton3->Checked) && (flag))
+		if ((flag) && (checkBox1->Checked))
 		{
-			Obj->Clear(g);
-			Obj->SetKorTwoEllips(e->X, e->Y);
-			Obj->Draw(g);
+			if (radioButton6->Checked)
+			{
+				Obj->Move(g, e->X - MoveX, e->Y - MoveY);
+			}
+			else if ((radioButton7->Checked))
+				Gr->Move(g, e->X, e->Y);
+			else 		
+			{
+				Obj->Hide(g);
+				Obj->SetSecondKor(e->X - MoveX, e->Y - MoveY);
+				Obj->Draw(g);
+			}
 		}
-
-		if ((radioButton5->Checked) && (flag))
-		{
-			Obj->Clear(g);
-			Obj->SetKorTwo(e->X, e->Y);
-			Obj->Draw(g);
-		}*/
 	}
 };
 }

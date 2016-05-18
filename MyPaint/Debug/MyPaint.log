@@ -1,4 +1,4 @@
-﻿Сборка начата 17.05.2016 0:14:17.
+﻿Сборка начата 17.05.2016 23:42:05.
      1>Проект "c:\documents\visual studio 2013\Projects\MyPaint\MyPaint\MyPaint.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
          F:\Visual Studia13\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib MyForm.cpp
@@ -8,9 +8,12 @@
          Debug\TChart.obj
          Debug\TObject.obj
          "Debug\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
+     1>.NETFramework,Version=v4.5.AssemblyAttributes.obj : warning LNK4099: "vc120.pdb" PDB эх эрщфхэ ё ".NETFramework,Version=v4.5.AssemblyAttributes.obj" шыш эр "c:\documents\visual studio 2013\Projects\MyPaint\Debug\vc120.pdb"; ъюьяюэютър юс·хъЄр т√яюыэ хЄё  ъръ яЁш юЄёєЄёЄтшш юЄырфюўэ√ї фрээ√ї
+     1>TObject.obj : warning LNK4099: "vc120.pdb" PDB эх эрщфхэ ё "TObject.obj" шыш эр "c:\documents\visual studio 2013\Projects\MyPaint\Debug\vc120.pdb"; ъюьяюэютър юс·хъЄр т√яюыэ хЄё  ъръ яЁш юЄёєЄёЄтшш юЄырфюўэ√ї фрээ√ї
+     1>TChart.obj : warning LNK4099: "vc120.pdb" PDB эх эрщфхэ ё "TChart.obj" шыш эр "c:\documents\visual studio 2013\Projects\MyPaint\Debug\vc120.pdb"; ъюьяюэютър юс·хъЄр т√яюыэ хЄё  ъръ яЁш юЄёєЄёЄтшш юЄырфюўэ√ї фрээ√ї
          MyPaint.vcxproj -> c:\documents\visual studio 2013\Projects\MyPaint\Debug\MyPaint.exe
      1>Сборка проекта "c:\documents\visual studio 2013\Projects\MyPaint\MyPaint\MyPaint.vcxproj" завершена (целевые объекты Build).
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:01.11
+Затраченное время: 00:00:01.77
